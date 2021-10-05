@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
+    public float runSpeed = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class Movement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Vector3 horizontal = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f);
-        transform.position = transform.position + horizontal *Time.fixedDeltaTime;
+        var movement = Input.GetAxis("Horizontal");
+        transform.position += new Vector3(movement, 0, 0) * Time.fixedDeltaTime * runSpeed;
     }
 }
