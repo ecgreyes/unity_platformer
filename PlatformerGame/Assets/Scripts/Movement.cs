@@ -27,8 +27,15 @@ public class Movement : MonoBehaviour
     void Update()
     {
         horizontalMovement = Input.GetAxis("Horizontal");
+
         if (Input.GetButtonDown("Jump") && isGrounded){
             rb2d.velocity = new Vector2(rb2d.velocity.x,jumpHeight);
+        }
+
+        if (horizontalMovement > 0) {
+            transform.localScale = new Vector3(1f,1f,1f);
+        } else if (horizontalMovement < 0){
+            transform.localScale = new Vector3(-1f,1f,1f);
         }
     }
 
